@@ -8,7 +8,6 @@ class customer:
     mobile_no = 0
     product_list = []
 customer_list = []
-head = ["Bill No.", "Name", "Contact No.", "Description", "Quantity", "Rate", "Total"]
 p = "yes"
 while p=="yes":
     c1 = customer()
