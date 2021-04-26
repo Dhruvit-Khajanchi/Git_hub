@@ -24,7 +24,7 @@ while op!=3:
             product_name=input("Enter Product Name: ")
             p_rate=int(input("Enter Rate: "))
             p_qty=int(input("Enter Qty: "))
-            cur.execute("insert into product values(%s, %s, %s, %s, %s, %s, %s)",(bill_no, customer_name, c_number, c_address, product_name, p_rate, p_qty))
+            cur.execute("insert into product values(%s, %s, %s, %s, %s, %s, %s)", (bill_no, customer_name, c_number, c_address, product_name, p_rate, p_qty))
             conn.commit()
             op2=input("Do You want to enter another Entry Yes/No?")
     elif op==2:
