@@ -1,7 +1,7 @@
 import psycopg2
 #make connection
 conn=psycopg2.connect(host="localhost",
-                     dbname="Product_database",
+                     dbname="postgres",
                      user="postgres",
                      password="1831")
 cur=conn.cursor()
@@ -18,17 +18,17 @@ while op!=3:
         while op2.lower()=="yes":
             print("<----------ENTRY---------->")
             bill_no= int(input("Enter Bill No.: "))
-            customer_name=int(input("Enter Customer Name: "))
+            customer_name=input("Enter Customer Name: ")
             c_number= int(input("Enter Mobile No.: "))
-            c_address=int(input("Enter Address: "))
-            product_name=int(input("Enter Product Name: "))
+            c_address=input("Enter Address: ")
+            product_name=input("Enter Product Name: ")
             p_rate=int(input("Enter Rate: "))
             p_qty=int(input("Enter Qty: "))
-            cur.exceute("insert into Product_database values(%s, %s, %s, %s, %s, %s, %s)"(bill_no, customer_name, c_number, c_address, product_name, p_rate, p_qty))
+            cur.execute("insert into product values(%s, %s, %s, %s, %s, %s, %s)",(bill_no, customer_name, c_number, c_address, product_name, p_rate, p_qty))
             conn.commit()
             op2=input("Do You want to enter another Entry Yes/No?")
     elif op==2:
-        cur.exceute("select bill_no, customer_name, c_number, c_address, product_name, p_rate, p_qty, p_qty*p_rate from Product_database")
+        cur.execute("select bill_no, customer_name, c_number, c_address, product_name, p_rate, p_qty, p_qty*p_rate from product")
         for row in cur:
             for value in row:
                 print(value, end="\t")
